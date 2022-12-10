@@ -11,11 +11,11 @@ In this package, we have use SFSafariViewController to load these link items.
 
 ## Installation :cook:   
     - `Integrating`:
-    <img src="install_1.png" height="480"/><br>
-    <img src="install_2.png" height="480"/><br>
+    <img src="img/install_1.png" height="480"/><br>
+    <img src="img/install_2.png" height="480"/><br>
     - `Consuming`:
-    <img src="consume_1.png" height="320"/><br>
-    <img src="consume_2.png" height="320"/>
+    <img src="img/consume_1.png" height="320"/><br>
+    <img src="img/consume_2.png" height="320"/>
     
 ## Improve us :handshake:
 <strong><em>:star: Please give me a STAR! :star:<em><strong>
