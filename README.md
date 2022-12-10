@@ -10,10 +10,10 @@ The About screen have to three display areas:
 In this package, we have use SFSafariViewController to load these link items.
 
 ## Installation :cook:   
-    - `Integrating`:
+    - Integrating:
     <img src="img/install_1.png" height="480"/><br>
     <img src="img/install_2.png" height="480"/><br>
-    - `Consuming`:
+    - Consuming:
     <img src="img/consume_1.png" height="320"/><br>
     <img src="img/consume_2.png" height="320"/>
     
