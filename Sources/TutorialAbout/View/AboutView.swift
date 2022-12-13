@@ -39,40 +39,61 @@ public struct AboutView: View {
     public init (react_items: [AboutModel]) {
         self.items = react_items
     }
+
+    // MARK: - COMPILER DIRECTIVE
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) var hsClass: UserInterfaceSizeClass?
+    #endif
+
     // MARK: - SOME SORT OF VIEW
     public var body: some View {
-        NavigationView {
-            VStack {
-                AboutBackgroundView()
-                    .padding(.top, -15)
+        #if os(iOS)
+        if hsClass == .compact {
+            NavigationView {
+                view
+            }
+            .accentColor(Color("AccentColor"))
+        } else {
+            view
+        }
+        #else
+        view
+            .frame(minWidth: 400, minHeight: 600)
+        #endif
+    }
 
-                List {
-                    Section(
-                        header: Text(NSLocalizedString("IMPROVEMENT US", comment: "IMPROVEMENT US"))
-                                .font(.custom("Nunito-Regular", size: 25, relativeTo: .largeTitle))
-                    ) {
-                        ForEach(improvementCase(items: items)) {
-                            AboutSectionView(aboutModel: $0)
-                        }
-                    }
-
-                    Section(
-                        header: Text(NSLocalizedString("CONNECTING WITH US", comment: "CONNECTING WITH US"))
-                                .font(.custom("Nunito-Regular", size: 25, relativeTo: .largeTitle))
-                    ) {
-                        ForEach(socialCase(items: items)) {
-                            AboutSectionView(aboutModel: $0)
-                        }
-                    }
-                }
-                .listStyle(.grouped)
+    @ViewBuilder
+    private var view: some View {
+        VStack {
+            AboutBackgroundView()
                 .padding(.top, -15)
 
-                Spacer()
+            List {
+                Section(
+                    header: Text(NSLocalizedString("IMPROVEMENT US", comment: "IMPROVEMENT US"))
+                            .font(.custom("Nunito-Regular", size: 25, relativeTo: .largeTitle))
+                ) {
+                    ForEach(improvementCase(items: items)) {
+                        AboutSectionView(aboutModel: $0)
+                    }
+                }
+
+                Section(
+                    header: Text(NSLocalizedString("CONNECTING WITH US", comment: "CONNECTING WITH US"))
+                            .font(.custom("Nunito-Regular", size: 25, relativeTo: .largeTitle))
+                ) {
+                    ForEach(socialCase(items: items)) {
+                        AboutSectionView(aboutModel: $0)
+                    }
+                }
             }
-            .navigationTitle(NSLocalizedString("About Us", comment: "About Us"))
-            .navigationBarTitleDisplayMode(.automatic)
+            .listStyle(.grouped)
+            .padding(.top, -15)
+
+            Spacer()
         }
+        .navigationTitle(NSLocalizedString("About Us", comment: "About Us"))
+        .navigationBarTitleDisplayMode(.automatic)
     }
 
     // MARK: - METHODS
